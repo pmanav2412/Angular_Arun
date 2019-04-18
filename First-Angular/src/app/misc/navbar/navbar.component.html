@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <a href="#" class="navbar-brand"></a>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav" style="margin-bottom: 10px;">
+        <li  style="list-style:none">
+            <a class="nav-link "  aria-controls="home" >WelCome</a>
+          </li>
+          <li  routerLinkActive="Active" style="list-style:none">
+            <a class="nav-link"  [routerLink]="['/welcome']" *ngIf="isLogedIn">Home</a>
+          </li>
+          <li  routerLinkActive="Active" style="list-style:none">
+            <a class="nav-link"  [routerLink]="['/products']" *ngIf="isLogedIn">Products</a>
+          </li>
+     </ul>
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="#" [routerLink]="['/login']" *ngIf="!isLogedIn">Login</a></li>
+       <li><a (click)="logout()" *ngIf="isLogedIn">Logout</a></li>
+    </ul>
+  </div>
+  </nav>
+  
+
+
+
+
+
+
+ 

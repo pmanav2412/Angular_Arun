@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductsService } from '../products.service'
 
 @Component({
@@ -7,7 +7,10 @@ import { ProductsService } from '../products.service'
   styleUrls: ['./products.component.css'],
   providers : [ProductsService]
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnDestroy {
+  
+  
+ 
 
   PageTitle: String = "THis is Page Title!";
 
@@ -17,17 +20,25 @@ export class ProductsComponent implements OnInit {
 
   products: any = [];
 
+  productSubscription : any;
+
   toggleImage() {
     this.showHideImage = !this.showHideImage;
   }
 
 
   constructor(private _productService : ProductsService) { 
-    // console.log(this._productService.getProducts);
+
   }
 
   ngOnInit() {
-    this.products = this._productService.getProducts();
+     this.productSubscription = this._productService.getProducts().subscribe((data)=>{
+      this.products = data;
+    });
+  }
+
+  ngOnDestroy(): void {
+  this.productSubscription.unsubscribe();
   }
 
 }
