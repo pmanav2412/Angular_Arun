@@ -5,12 +5,11 @@ import { ProductsService } from '../products.service'
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers : [ProductsService]
+  providers: [ProductsService]
 })
-export class ProductsComponent implements OnInit,OnDestroy {
-  
-  
- 
+
+
+export class ProductsComponent implements OnInit, OnDestroy {
 
   PageTitle: String = "THis is Page Title!";
 
@@ -20,25 +19,25 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   products: any = [];
 
-  productSubscription : any;
+  productSubscription: any;
 
   toggleImage() {
     this.showHideImage = !this.showHideImage;
   }
 
 
-  constructor(private _productService : ProductsService) { 
+  constructor(private _productService: ProductsService) {
 
   }
 
   ngOnInit() {
-     this.productSubscription = this._productService.getProducts().subscribe((data)=>{
+    this.productSubscription = this._productService.getProducts().subscribe((data) => {
       this.products = data;
     });
   }
 
   ngOnDestroy(): void {
-  this.productSubscription.unsubscribe();
+    this.productSubscription.unsubscribe();
   }
 
 }

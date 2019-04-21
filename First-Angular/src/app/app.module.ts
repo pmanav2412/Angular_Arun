@@ -13,6 +13,7 @@ import { WelcomeComponent } from './misc/welcome/welcome.component';
 import { NavbarComponent } from './misc/navbar/navbar.component';
 import { ProductDetailComponent } from './Product/product-detail/product-detail.component';
 import { LoginComponent } from './auth/login/login.component';
+import { PanelComponent } from './auth/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './auth/login/login.component';
     NavbarComponent,
     ProductDetailComponent,
     LoginComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,
