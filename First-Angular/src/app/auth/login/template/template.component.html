@@ -1,0 +1,38 @@
+<form #userForm="ngForm">
+  <div class="from-group">
+    <label class="control-label">Firstname</label>
+    <input type="text" class="form-control" placeholder="FirstName" name="firstname" [(ngModel)]="user.firstname" required minlength="5"  #firstNameVar="ngModel"/>
+  </div>
+  <div *ngIf="!firstNameVar.valid && firstNameVar.touched ">
+      <div class="alert alert-danger" *ngIf="firstNameVar.errors.required">enter firstname</div>
+      <div class="alert alert-danger" *ngIf="firstNameVar.errors.minlength">First namer should be min of 5 char</div>
+  </div>
+
+  <div class="from-group">
+    <label class="control-label">Lastname</label>
+    <input type="text" class="form-control" placeholder="LastName" name="lastname" [(ngModel)]="user.lastname" required minlength="5" #lastNameVar="ngModel" />
+  </div>
+  <div *ngIf="!lastNameVar.valid && lastNameVar.touched ">
+      <div class="alert alert-danger" *ngIf="lastNameVar.errors.required">enter Lastname</div>
+      <div class="alert alert-danger" *ngIf="lastNameVar.errors.minlength">last name min 5 char required</div>
+  </div>
+
+  <div class="from-group">
+    <label class="control-label">Email</label>
+    <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="user.email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #emailVar="ngModel"/>
+  </div>
+  <div *ngIf="!emailVar.valid && emailVar.touched ">
+      <div class="alert alert-danger" *ngIf="emailVar.errors.required">enter Email</div>
+      <div class="alert alert-danger" *ngIf="emailVar.errors.pattern">eneter valid email</div>
+  </div>
+ 
+  <div class="from-group">
+    <label class="control-label" > 
+    <input type="radio" name="gender" [(ngModel)]="user.gender" value="FeMale" required /> female  </label>
+
+
+    <label class="control-label">   
+    <input type="radio" name="gender" [(ngModel)]="user.gender" value="Male" required /> Male </label>
+  </div>
+   <button class="btn btn-primary" [disabled]="!userForm.valid">Save</button>
+</form>

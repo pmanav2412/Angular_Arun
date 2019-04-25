@@ -13,6 +13,12 @@
           <li  routerLinkActive="Active" style="list-style:none">
             <a class="nav-link"  [routerLink]="['/products']" *ngIf="isLogedIn">Products</a>
           </li>
+          <li  routerLinkActive="Active" style="list-style:none">
+            <a class="nav-link"  [routerLink]="['/template']" *ngIf="isLogedIn">template</a>
+          </li>
+          <li  routerLinkActive="Active" style="list-style:none">
+            <a class="nav-link"  [routerLink]="['/reactive']" *ngIf="isLogedIn">Reactive</a>
+          </li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <li><a href="#" [routerLink]="['/login']" *ngIf="!isLogedIn">Login</a></li>

@@ -1,0 +1,38 @@
+<form [formGroup]="userForm">
+    <div class="from-group">
+      <label class="control-label">Firstname</label>
+      <input type="text" class="form-control" placeholder="FirstName"  formControlName="firstName" />
+    </div>
+     <div *ngIf="!userForm.get('firstName').valid && userForm.get('firstName').touched ">
+        <div class="alert alert-danger" *ngIf="userForm.get('firstName').errors.required">enter firstname</div>
+        <div class="alert alert-danger" *ngIf="userForm.get('firstName').errors.minlength">First namer should be min of 5 char</div>
+    </div> 
+  
+    <div class="from-group">
+      <label class="control-label">Lastname</label>
+      <input type="text" class="form-control" placeholder="LastName" formControlName="lastName"/>
+    </div>
+   <div *ngIf="!userForm.get('lastName').valid && userForm.get('lastName').touched ">
+        <div class="alert alert-danger" *ngIf="userForm.get('lastName').errors.required">enter Lastname</div>
+        <div class="alert alert-danger" *ngIf="userForm.get('lastName').errors.minlength">last name min 5 char required</div>
+    </div> 
+  
+    <div class="from-group">
+      <label class="control-label">Email</label>
+      <input type="text" class="form-control" placeholder="Email" formControlName="Email"/>
+    </div>
+     <div *ngIf="!userForm.get('Email').valid && userForm.get('Email').touched ">
+        <div class="alert alert-danger" *ngIf="userForm.get('Email').errors.required">enter Email</div>
+        <div class="alert alert-danger" *ngIf="userForm.get('Email').errors.pattern">eneter valid email</div>
+    </div>
+   
+    <div class="from-group">
+      <label class="control-label" > 
+      <input type="radio" formControlName="Gender" /> female  </label>
+  
+  
+      <label class="control-label">   
+      <input type="radio" value="Male" formControlName="Gender" /> Male </label>
+    </div>
+     <button class="btn btn-primary" [disabled]="!userForm.valid" (click)="userValue()">Save</button>
+  </form>
